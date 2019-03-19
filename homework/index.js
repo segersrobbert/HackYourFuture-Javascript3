@@ -8,7 +8,6 @@ function getPromise() {
 }
 
 
-
 function populate(Prom) {
   console.log("sabs")
   let selectContent = document.getElementById("liste").value;
@@ -25,7 +24,6 @@ function populate(Prom) {
     }
   })
 }
-
 
 
 
@@ -52,11 +50,9 @@ function loadPage(Prom) {
 
     })
 
-
     // populate the div according to the selected item
     // this code is here to ensure the caracteristics of the default value are printed
     // after this action will be handled by the populate function when the value of the section is changed
-
 
     let selectContent = document.getElementById("liste").value;
     for (x of result) {
@@ -81,12 +77,6 @@ loadPage(Prom);
 document.getElementById("liste").addEventListener('change', function () {
   populate(Prom);
 })
-
-
-
-
-
-
 
 
 
