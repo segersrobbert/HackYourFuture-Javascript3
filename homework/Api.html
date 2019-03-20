@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="Api.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i&amp;subset=cyrillic,greek,greek-ext"
+    rel="stylesheet">
+
+</head>
+
+<body>
+  <div id="blue-header">
+    <header>
+      <div>
+        <p>hyf repositories:</p>
+        <select id="getPosts" class="getText"></select>
+        <option id="output">get API data</option>
+      </div>
+
+    </header>
+  </div>
+  <script>
+    document.getElementById('getPosts').addEventListener('click', getPost);
+
+    function getPost() {
+      fetch('https://api.github.com/orgs/HackYourFuture/repos?per_page=100')
+        .then((res) => res.json())
+        .then((data) => {
+          let output = `<p>name</p> `;
+          data.forEach(function (post) {
+            output += `<option>${post.name}</option>
+                <option>${post.description}</option>
+                <option>${post.full_name}</option>  `;
+          });
+          document.getElementById('output').innerHTML = output;
+        });
+    }
+  </script>
+</body>
+
+</html>
