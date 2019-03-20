@@ -22,7 +22,7 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
     function addOptions() {
       // eslint-disable-next-line no-undef
       for (let i = names.length - 1; i >= 0; i--) {
-        const x = document.getElementById('respo-list');
+        const x = document.getElementById('repo-list');
         const option = document.createElement('option');
         // eslint-disable-next-line no-undef
         option.text = names[i];

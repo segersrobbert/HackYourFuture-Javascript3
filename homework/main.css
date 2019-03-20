@@ -45,7 +45,7 @@ table {
 /* CSS Reset ends*/
 
 
-@import url('https://fonts.googleapis.com/css?family=Play');
+
 
 html, body {
   width: 100%;
@@ -60,20 +60,36 @@ html, body {
   align-items: stretch;
   height: 100%;
   min-height: 100%;
-  background-color: #ff5d9e;
+  background-color: #fdfdf6;
+  
 	
 }
 #container-left{
-  background-color: #8f71ff;
+  background-color: #dbe9b7;
+  margin: 10px;
 }
 #container-right{
-  background-color: #82acff;
+  box-sizing: border-box;
+  background-color: #fdfdf6;
+  
 }
 #up {
+  box-sizing: border-box;
   height:50%;
-  background-color: #82acff;
+  background-color: #f4dada;
+  margin-top: 10px;
+  margin-right: 10px;
+  
 }
 #down {
+  box-sizing: border-box;
+  margin-top: 10px;
   height:50%;
-  background-color: #8bffff;
+  background-color: #b8b2a6;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+img{
+  width: 10%;
+  display: flex;
 }
