@@ -17,6 +17,18 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
     const names = data.map(p => p.name);
     // eslint-disable-next-line no-console
     console.log(names);
+
+    window.onload = (function () { addOptions(); }());
+    function addOptions() {
+      // eslint-disable-next-line no-undef
+      for (let i = names.length - 1; i >= 0; i--) {
+        const x = document.getElementById('respo-list');
+        const option = document.createElement('option');
+        // eslint-disable-next-line no-undef
+        option.text = names[i];
+        x.add(option, x[0]);
+      }
+    }
   })
   .catch((error) => {
     // eslint-disable-next-line no-console
