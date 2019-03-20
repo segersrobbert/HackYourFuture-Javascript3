@@ -63,7 +63,7 @@ You will be working on the same application during the next three weeks. For eac
 
 | Week | Branch  | Assignment |
 | ---- | ------- | ---------- |
-|  1   | `week1` | - By Wednesday: Fetch the HYF repositories and log their display names to the console.<br/>- By Friday: Populate a `<select>` list with the repository names; allow the user to pick one, and display some of its details, like in the example. |
+|  1   | `week1` | - Part 1 & 2, by Wednesday: Setup environment, fetch the HYF repositories and log their display names to the console.<br/>- Part 3, by Friday: Populate a `<select>` list with the repository names; allow the user to pick one, and display some of its details, like in the example. |
 |  2   | `week2` | Based on the `week1` branch:<br>- When a repository is selected, also load the contributors. Display a loading indicator while loading.<br>- Style the UI, and make it responsive.|
 |  3   | `week3` | Based on the `week2` branch:<br>- Refactor the application to use ES6 Classes and async/await.<br>- Make the app ARIA-compliant.<br />- Marvel at your first application. |
 
@@ -72,30 +72,65 @@ You will be working on the same application during the next three weeks. For eac
 ## Part 1 - <small>Set-up your environment</small>
 **Deadline: Wednesday evening**
 
-- [ ] Fork our class' fork of the JavaScript3 repository to your own GitHub account. Yes, you'll be creating a fork of a fork of a fork:
+- [ ] [Fork](https://help.github.com/en/articles/fork-a-repo) our class' fork of the JavaScript3 repository to your own GitHub account. Yes, you'll be creating a fork of a fork of a fork:
 
-   ```
-   - Main HYF Javascript 3 repository: https://github.com/HackYourFuture/JavaScript3
-     - Belgium HYF fork: https://github.com/HackYourFutureBelgium/JavaScript3
-       - Our class' (Rob's) fork: https://github.com/segersrobbert/JavaScript3
-         - Your fork here.
-   ```
+  ```
+  - Main HYF Javascript 3 repository: https://github.com/HackYourFuture/JavaScript3
+    - Belgium HYF fork: https://github.com/HackYourFutureBelgium/JavaScript3
+      - Our class' (Rob's) fork: https://github.com/segersrobbert/JavaScript3
+        - Your fork here.
+  ```
 
-- [ ] Clone the fork to your laptop.
+  > *Reminder*: A fork is like your own copy of a repository, under your own account, of someone else's repository. Read everything about forking and being social on GitHub [here](https://help.github.com/en/articles/fork-a-repo).
+  >
+  > We use forks so that you can later on create [Pull Requests](https://help.github.com/en/articles/about-pull-requests). In short, a pull request (PR) is a way to ask the original owner of a repository (where you forked off from) to merge a change that you did on a branch of your local repository, into the original repository.
+  >
+  > A big advantage of PR's is that it allows to **compare code** and **give feedback** directly on the code! This is very handy when reviewing homework!
+
+- [ ] [Clone](https://help.github.com/en/articles/fork-a-repo#step-2-create-a-local-clone-of-your-fork) the fork to your laptop.
+
 - [ ] Open the newly created `JavaScript3` folder from the cloned repository in VS Code *(always open this entire main folder!)*
-- [ ] Install the [**ESLint**](https://eslint.org/) extension in VS Code. This extension will highlight and inform you of any violations of the style guide, and allow you to auto-fix a lot of issues. You should probably also already install the [**EditorConfig for VS Code**](https://editorconfig.org/) plugin. Although it's not required in our case because we all use the same editor, it will come in handy when you work on public projects in the future.
+  
+  > *Tip*: a command line, you can open a folder in VS Code by typing:
+  >
+  > ```
+  > code .
+  > ```
 
-- [ ] Open a Terminal window in VS Code or elsewhere, and **from the main JavaScript3 folder**, type the following command to install the airbnb style guide and ESLint tools as required for the homework:
+- [ ] Open a Terminal window in VS Code or in your favorite terminal (like [cmder](https://cmder.net/) or [mingw32](https://gitforwindows.org/)), and **from the main `JavaScript3` folder**, type the following command to install the airbnb style guide and ESLint tools as required for the homework:
 
-   ```
-   npm install
-   ```
+  ```
+  npm install
+  ```
+  
+  This should output something like this. If not, contact your coach on Slack!
+
+  ```
+  $ npm install
+  npm WARN hyf-js3-homework@1.0.0 No repository field.
+
+  added 188 packages in 19.38s
+  ```
 
 - [ ] Create a new branch for the week 1 homework with the following command:
 
-   ```
-   git checkout -b week1
-   ```
+  ```
+  git checkout -b week1
+  ```
+   
+- [ ] Install the [**ESLint**](https://eslint.org/) extension in VS Code. This extension will highlight and inform you of any violations of the style guide, and allow you to auto-fix a lot of issues. You should probably also already install the [**EditorConfig for VS Code**](https://editorconfig.org/) plugin. Although it's not required in our case because we all use the same editor, it will come in handy when you work on public projects in the future.
+
+  **Installing ESLint**:
+
+  ![Installing ESLint](./assets/eslint_install.png)
+
+  **Inspecting issues**: Your errors will be highlighted in the editor, and you get an overview in the 'Problems' window; which you access by clicking the little icon in the bottom-left corner. Selecting an error from this list naviates directly to it.
+
+  ![Inspecting ESLint issues](./assets/eslint_view_errors.png)
+
+  **Auto-fix issues**: Press `ctrl+shift+p`, type `eslint` and choose 'Fix all auto-fixable Problems'. You may have to do this a few times.
+
+  ![Inspecting ESLint issues](./assets/eslint_autofix.png)
 
 ## Part 2 - <small>Call the API</small>
 **Deadline: Wednesday evening**
@@ -115,6 +150,8 @@ You'll create your application inside the `homework` subfolder of the main `Java
 
   > *Hint*: map.
 
+- [ ] Hand in this first part of your homework. See at the end of this guide for instructions.
+
 ## Part 3 - <small>Select list, repo details</small>
 **Deadline: Friday evening**
 
@@ -131,6 +168,8 @@ You'll create your application inside the `homework` subfolder of the main `Java
   > - How to convert a [ISO 8601](https://nl.wikipedia.org/wiki/ISO_8601) date string into a JavaScript `Date` (we haven't seen this yet, so Google!), and then format it as a human-readable *locale date string* and *locale time string*?
 
   > We know: creating HTML and modifying the DOM 'manually' is tedious and cumbersome. Later on in your HYF journey, in the [React module](https://github.com/HackYourFuture/React), you'll be modifying the DOM in a much easier and more fun way!
+
+- [ ] That's it for now, time to hand in again!
 
 # Handing in your homework
 
@@ -154,12 +193,20 @@ If the answer is 'yes' to the preceding questions you are ready to follow these 
 
 - [ ] Push your `week1` branch to GitHub:
 
-   ```
-   git push -u origin week1
-   ```
+  ```
+  git push -u origin week1
+  ```
+
+  This will give you a link that you can follow to immediately create a pull request (see next step).
 
 - [ ] Create a pull request (PR) for your `week1` branch against our class' (Rob's) fork `master` branch.
 
-- [ ] Keep an eye on your notifications: if there are issues with your homework, we'll add comments to your PR. If we don't add comments, that means you've done an excellent job - or we dind't find the time to review it :(.
+  ![Create PR in GitHub](./assets/create_pr.png)
 
-- [ ] You can always amend your homework by pushing more commits to your branch - they'll be included in the pull request. Do this to resolve any remarks we gave in the comments!
+  > *Heads up!* Pay close attention to the values in the dropdown lists! Be sure to select `segersrobbert/JavaScript3` as the 'base repository', `master` as the 'base branch', and on the right-hand side, select your fork as the 'head repository' and `week1` (or whatever your homework branch is called) as the 'compare' branch.
+
+- [ ] Keep an eye on your notifications: if there are issues with your homework, your coach will add comments to your PR. If they don't add comments, that means you've done an excellent job - or they dind't find the time to review it :(.
+
+  Note that of course the coach will never actually *merge* your PR.
+
+- [ ] You can always amend your homework by pushing more commits to your branch - they'll be included in the pull request automatically, and your coach will be notified. Do this to resolve any remarks your coach gave in the comments!
