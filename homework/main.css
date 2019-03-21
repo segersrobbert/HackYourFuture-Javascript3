@@ -1,0 +1,28 @@
+.header {
+  background-color: #95afc0;
+  max-width: 750px;
+  height: 100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 50px;
+}
+
+.title {
+  font-family: sans-serif;
+  color: #dff9fb;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.drop-down {
+  background-color: #f9f9f9;
+  height: 35px;
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
