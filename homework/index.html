@@ -23,15 +23,36 @@
         <h1>HYF Github Repositories</h1>
         <form>
           <select id="repo-list" name="List of HYF Repositories">
-
+            <option value="" hidden>Choose a Respository for details</option>
           </select>
         </form>
       </header>
     </div>
 
     <div id="container-right">
-      <div id="up">Repository's details</div>
-      <div id="down">Contrubutions</div>
+      <div id="up">
+        <h2>Repository's details</h2>
+        <table>
+          <tr id="name">
+            <td>Name:</td>
+          </tr>
+          <tr id="description">
+            <td>Description:</td>
+          </tr>
+          <tr id="forks">
+            <td>Forks:</td>
+          </tr>
+          <tr id="updated">
+            <td>Updated:</td>
+          </tr>
+        </table>
+      </div>
+
+
+      <div id="down">
+        <h2>Contrubutions</h2>
+
+      </div>
     </div>
   </div>
   <script src="index.js"></script>
