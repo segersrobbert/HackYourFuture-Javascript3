@@ -17,8 +17,9 @@
     <header>
       <div>
         <p>hyf repositories:</p>
-        <select id="getPosts" class="getText"></select>
-        <option id="output">get API data</option>
+        <select id="output" class="getText">
+          <option id="getPosts">get API data</option>
+        </select>
       </div>
 
     </header>
@@ -32,9 +33,7 @@
         .then((data) => {
           let output = `<p>name</p> `;
           data.forEach(function (post) {
-            output += `<option>${post.name}</option>
-                <option>${post.description}</option>
-                <option>${post.full_name}</option>  `;
+            output += `<option>${post.name}</option>`;
           });
           document.getElementById('output').innerHTML = output;
         });
