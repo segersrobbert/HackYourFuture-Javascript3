@@ -12,13 +12,10 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
   .then(status)
   .then(json)
   .then((data) => {
-    // eslint-disable-next-line no-console
-    console.log('Data gotten succesfully', data);
     const names = data.map(p => p.name);
     const descr = data.map(p => p.description);
     const forks = data.map(p => p.forks);
     const updated = data.map(p => p.updated_at);
-    // eslint-disable-next-line no-console
     names.forEach((arrayElement) => {
       const selOptions = document.createElement('option');
       const selectElem = document.getElementById('repo-list');
@@ -59,7 +56,8 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
       const cell3 = document.getElementById('forks').insertCell();
       cell3.innerHTML = detailsArray[selectedRepoIndex - 1].fork;
       const cell4 = document.getElementById('updated').insertCell();
-      cell4.innerHTML = detailsArray[selectedRepoIndex - 1].update;
+      const time = new Date(detailsArray[selectedRepoIndex - 1].update);
+      cell4.innerHTML = time.toUTCString();
     };
   })
   .catch((error) => {
