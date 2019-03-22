@@ -42,11 +42,24 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
     document.getElementById('repo-list').onchange = function popTable() {
       const selectedRepoIndex = document.getElementById('repo-list').selectedIndex;
       const nameRow = document.getElementById('name');
-      let rowCount = document.getElementById('name').cells.length;
-      console.log(rowCount);
-      // if (rowCount >= 1) { nameRow.deleteCell(1); }
+      const desRow = document.getElementById('description');
+      const forkRow = document.getElementById('forks');
+      const upRow = document.getElementById('updated');
+      const rowCount = document.getElementById('name').cells.length;
+      if (rowCount > 1) {
+        nameRow.deleteCell(1);
+        desRow.deleteCell(1);
+        forkRow.deleteCell(1);
+        upRow.deleteCell(1);
+      }
       const cell1 = document.getElementById('name').insertCell();
       cell1.innerHTML = detailsArray[selectedRepoIndex - 1].name;
+      const cell2 = document.getElementById('description').insertCell();
+      cell2.innerHTML = detailsArray[selectedRepoIndex - 1].des;
+      const cell3 = document.getElementById('forks').insertCell();
+      cell3.innerHTML = detailsArray[selectedRepoIndex - 1].fork;
+      const cell4 = document.getElementById('updated').insertCell();
+      cell4.innerHTML = detailsArray[selectedRepoIndex - 1].update;
     };
   })
   .catch((error) => {
