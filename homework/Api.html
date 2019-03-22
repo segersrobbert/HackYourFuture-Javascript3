@@ -20,21 +20,20 @@
           <option id="getPosts" value="0">repository name</option>
         </select>
       </p>
-        </select>
-      </div>
-
     </header>
   </div>
-  <script>
-    document.getElementById('getPosts').addEventListener('click', getPost);
 
-    function getPost() {
+  <script>
+    document.getElementById('getPosts').addEventListener('click', getPosts);
+
+    function getPosts() {
       fetch('https://api.github.com/orgs/HackYourFuture/repos?per_page=100')
         .then((res) => res.json())
         .then((data) => {
-          let output = `<p>name</p> `;
+          let output = ` <h1>name</h1> `;
           data.forEach(function (post) {
-            output += `<option>${post.name}</option>`;
+            output += `
+            <option>${post.name}</option>`;
           });
           document.getElementById('output').innerHTML = output;
         });
