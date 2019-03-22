@@ -10,9 +10,6 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
   .then(json)
   .then((data) => {
     const names = data.map(p => p.name);
-    const descr = data.map(p => p.description);
-    const forks = data.map(p => p.forks);
-    const updated = data.map(p => p.updated_at);
     names.forEach((arrayElement) => {
       const selOptions = document.createElement('option');
       const selectElem = document.getElementById('repo-list');
@@ -22,10 +19,10 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
     });
     document.getElementById('repo-list').onchange = function popTable() {
       const selectedRepoIndex = document.getElementById('repo-list').selectedIndex;
-      document.getElementById('name').innerHTML = names[selectedRepoIndex - 1];
-      document.getElementById('description').innerHTML = descr[selectedRepoIndex - 1];
-      document.getElementById('forks').innerHTML = forks[selectedRepoIndex - 1];
-      const time = new Date(updated[selectedRepoIndex - 1]);
+      document.getElementById('name').innerHTML = data[selectedRepoIndex - 1].name;
+      document.getElementById('description').innerHTML = data[selectedRepoIndex - 1].description;
+      document.getElementById('forks').innerHTML = data[selectedRepoIndex - 1].forks;
+      const time = new Date(data[selectedRepoIndex - 1].updated_at);
       document.getElementById('updated').innerHTML = time.toUTCString();
     };
   })
