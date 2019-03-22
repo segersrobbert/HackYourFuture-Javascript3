@@ -4,10 +4,7 @@ const status = (response) => {
   }
   return Promise.reject(new Error(response.statusText));
 };
-
 const json = response => response.json();
-
-// fetching api and onload when page load
 window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?per_page=100')
   .then(status)
   .then(json)
