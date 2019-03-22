@@ -10,8 +10,26 @@
   <body>
     <div class="header">
       <span class="title">Select a repo to view</span>
-      <select name="repoList" id="dropDown" class="drop-down"></select
-      ><script src="index.js"></script>
+      <select
+        name="repoList"
+        id="dropDown"
+        class="drop-down"
+        onchange="reload()">
+      </select>
     </div>
+    <div class="list-box" id="mainlist">
+      <span class="sub-title">Repository:</span>
+      <span class="list name" id="repoName"></span>
+      <br />
+      <span class="sub-title">Description:</span>
+      <span class="list description" id="repoDescr"></span>
+      <br />
+      <span class="sub-title">Forks:</span>
+      <span class="list forks" id="repoForks"></span>
+      <br />
+      <span class="sub-title">Last Updated:</span>
+      <span class="list updated" id="repoUpdate"></span>
+    </div>
+    <script src="index.js"></script>
   </body>
 </html>

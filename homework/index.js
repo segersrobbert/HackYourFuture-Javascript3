@@ -1,14 +1,10 @@
-// Get the drop down list
-
 const dropDown = document.getElementById('dropDown');
 
-// Fetch data
+const listArray = [];
 
 const promise = fetch(
   'https://api.github.com/orgs/HackYourFuture/repos?per_page=100',
 );
-
-// Fill the drop down list with repo names
 
 promise
   .then(newData => newData.json())
@@ -18,5 +14,18 @@ promise
       listItem = document.createElement('option');
       listItem.text = data[i].name;
       dropDown.add(listItem);
+      listArray[i] = data[i];
     }
   });
+console.log(listArray);
+function reload() {
+  listArray.forEach((i) => {
+    if (dropDown.value === i.name) {
+      const dispTime = new Date(i.updated_at);
+      document.getElementById('repoName').innerHTML = i.name;
+      document.getElementById('repoDescr').innerHTML = i.description;
+      document.getElementById('repoForks').innerHTML = i.forks;
+      document.getElementById('repoUpdate').innerHTML = dispTime.toUTCString();
+    }
+  });
+}
