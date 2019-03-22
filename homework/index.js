@@ -36,10 +36,18 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
         name,
         des,
         fork,
-        update
+        update,
       });
     }
-    console.log(detailsArray);
+    document.getElementById('repo-list').onchange = function popTable() {
+      const selectedRepoIndex = document.getElementById('repo-list').selectedIndex;
+      const nameRow = document.getElementById('name');
+      let rowCount = document.getElementById('name').cells.length;
+      console.log(rowCount);
+      //if (rowCount >= 1) { nameRow.deleteCell(1); }
+      const cell1 = document.getElementById('name').insertCell();
+      cell1.innerHTML = detailsArray[selectedRepoIndex - 1].name;
+    };
   })
   .catch((error) => {
     // eslint-disable-next-line no-console
