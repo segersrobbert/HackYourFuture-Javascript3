@@ -23,41 +23,13 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
       selOptions.value = arrayElement;
       selectElem.appendChild(selOptions);
     });
-    const detailsArray = [];
-    for (let i = 0; i < names.length; i++) {
-      const name = names[i];
-      const des = descr[i];
-      const fork = forks[i];
-      const update = updated[i];
-      detailsArray.push({
-        name,
-        des,
-        fork,
-        update,
-      });
-    }
     document.getElementById('repo-list').onchange = function popTable() {
       const selectedRepoIndex = document.getElementById('repo-list').selectedIndex;
-      const nameRow = document.getElementById('name');
-      const desRow = document.getElementById('description');
-      const forkRow = document.getElementById('forks');
-      const upRow = document.getElementById('updated');
-      const rowCount = document.getElementById('name').cells.length;
-      if (rowCount > 1) {
-        nameRow.deleteCell(1);
-        desRow.deleteCell(1);
-        forkRow.deleteCell(1);
-        upRow.deleteCell(1);
-      }
-      const cell1 = document.getElementById('name').insertCell();
-      cell1.innerHTML = detailsArray[selectedRepoIndex - 1].name;
-      const cell2 = document.getElementById('description').insertCell();
-      cell2.innerHTML = detailsArray[selectedRepoIndex - 1].des;
-      const cell3 = document.getElementById('forks').insertCell();
-      cell3.innerHTML = detailsArray[selectedRepoIndex - 1].fork;
-      const cell4 = document.getElementById('updated').insertCell();
-      const time = new Date(detailsArray[selectedRepoIndex - 1].update);
-      cell4.innerHTML = time.toUTCString();
+      document.getElementById('name').innerHTML = names[selectedRepoIndex - 1];
+      document.getElementById('description').innerHTML = descr[selectedRepoIndex - 1];
+      document.getElementById('forks').innerHTML = forks[selectedRepoIndex - 1];
+      const time = new Date(updated[selectedRepoIndex - 1]);
+      document.getElementById('updated').innerHTML = time.toUTCString();
     };
   })
   .catch((error) => {
