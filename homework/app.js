@@ -6,7 +6,7 @@ function append(parent, el) {
   return parent.appendchild(el);
 }
 const select = document.getElementById('repositories');
-const url = ('https://api.github.com/HackYourFuture/repos?per_page=100');
+const url = ('https://api.github.com/orgs/HackYourFuture/repos?per_page=100');
 fetch(url)
   .then(response => response.json())
   .then((data) => {

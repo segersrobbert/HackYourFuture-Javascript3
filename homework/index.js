@@ -4,7 +4,7 @@ const reposContainer = document.querySelector('.repos');
 // const clientSecret = '0ecdc67b56e4ca7c3b4710b60f135d52a8f11a32';
 const fetchRepo = async () => {
   // const apiCall = await fetch(`https://api.github.com/users/${user}?clientId=${clientId}&clientSecret=${clientSecret}`);
-  const apiCall = await fetch('https://api.github.com/HackYourFuture/repos?per_page=100');
+  const apiCall = await fetch('https: //api.github.com/orgs/HackYourFuture/repos?per_page=100');
 
   const data = await apiCall.json();
   return data;
