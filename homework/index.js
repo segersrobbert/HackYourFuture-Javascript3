@@ -17,7 +17,7 @@ promise
       listArray[i] = data[i];
     }
   });
-console.log(listArray);
+
 function reload() {
   listArray.forEach((i) => {
     if (dropDown.value === i.name) {
