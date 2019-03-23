@@ -14,10 +14,7 @@ fetch(url)
     // eslint-disable-next-line array-callback-return
     return repositories.map((repository) => {
       const option = createNode('option');
-      const span = createNode('span');
-
-      span.innerHtml = `${repository}`;
-      append(option, span);
+      option.innerHtml = `${repository.value}`;
       append(select, option);
     });
   })
