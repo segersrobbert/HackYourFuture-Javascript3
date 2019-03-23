@@ -2,7 +2,8 @@ function getPromise() {
   return fetch('https://api.github.com/orgs/HackYourFuture/repos?per_page=100')
     .then(response => response.json());
 }
-const myPromise = getPromise();
+const myPromise = getPromise(); // Set the promise as a global variable
+
 function selectedRepoCaracteristics(selectValue) {
   myPromise.then((result) => {
     result.forEach((x) => {
