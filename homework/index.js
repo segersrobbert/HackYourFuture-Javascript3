@@ -12,18 +12,18 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
     const names = data.map(p => p.name);
     names.forEach((arrayElement) => {
       const selOptions = document.createElement('option');
-      const selectElem = document.getElementById('repo-list');
+      const selectElem = document.getElementById('repo-select');
       selOptions.innerHTML = arrayElement;
       selOptions.value = arrayElement;
       selectElem.appendChild(selOptions);
     });
-    document.getElementById('repo-list').onchange = function popTable() {
-      const selectedRepoIndex = document.getElementById('repo-list').selectedIndex;
-      document.getElementById('name').innerHTML = data[selectedRepoIndex - 1].name;
-      document.getElementById('description').innerHTML = data[selectedRepoIndex - 1].description;
-      document.getElementById('forks').innerHTML = data[selectedRepoIndex - 1].forks;
+    document.getElementById('repo-select').onchange = function popTable() {
+      const selectedRepoIndex = document.getElementById('repo-select').selectedIndex;
+      document.getElementById('repo-name').innerHTML = data[selectedRepoIndex - 1].name;
+      document.getElementById('repo-description').innerHTML = data[selectedRepoIndex - 1].description;
+      document.getElementById('repo-forks').innerHTML = data[selectedRepoIndex - 1].forks;
       const time = new Date(data[selectedRepoIndex - 1].updated_at);
-      document.getElementById('updated').innerHTML = time.toUTCString();
+      document.getElementById('repo-updated').innerHTML = time.toUTCString();
     };
   })
   .catch((error) => {
