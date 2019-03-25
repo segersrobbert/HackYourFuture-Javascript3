@@ -152,3 +152,12 @@ td.label {
   margin-left: auto;
   width: 60px;
 }
+#snipper{
+  position: fixed;
+  position: fixed;
+  z-index: 1031;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
