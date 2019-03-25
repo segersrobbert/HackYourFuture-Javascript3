@@ -18,6 +18,7 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
       selectElem.appendChild(selOptions);
     });
     document.getElementById('repo-select').onchange = function popTable() {
+      document.getElementById('spinner').style.display = 'block';
       const selectedRepoIndex = document.getElementById('repo-select').selectedIndex;
       document.getElementById('repo-name').innerHTML = data[selectedRepoIndex - 1].name;
       document.getElementById('repo-description').innerHTML = data[selectedRepoIndex - 1].description;
@@ -27,8 +28,8 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
       fetch(data[selectedRepoIndex - 1].contributors_url)
         .then(status)
         .then(response => response.json())
+        // eslint-disable-next-line no-shadow
         .then((data) => {
-          document.getElementById('snipper').style.visibility = 'visible';
           const contributors = data;
           const mylist = document.getElementById('contributor-list');
           const lis = mylist.getElementsByTagName('li');
@@ -39,16 +40,17 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
             const listItem = document.createElement('li');
             listItem.setAttribute('class', 'contributor-item');
             listItem.setAttribute('aria-label', person.login);
-            listItem.innerHTML = `<img src="${person.avatar_url}" width="50" height="50" alt="avatar"><div class="contributor-data"><div>${person.login}</div><div class="contributor-badge">${person.contributions}</div></div>`;
+            listItem.innerHTML = `<img src="${person.avatar_url}" width="50" height="50" class="contributor-avatar"><div class="contributor-data"><div>${person.login}</div><div class="contributor-badge">${person.contributions}</div></div>`;
             document.getElementById('contributor-list').appendChild(listItem);
+            listItem.addEventListener('click', () => { window.open(person.html_url, '_blank'); });
           });
         })
         .catch((error) => {
+          // eslint-disable-next-line no-console
           console.log('Request failed', error);
         })
-        .then(() => {
-          document.getElementById('snipper').style.visibility = 'hidden';
+        .finally(() => {
+          document.getElementById('spinner').style.display = 'none';
         });
     };
   });
-
