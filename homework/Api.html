@@ -33,7 +33,8 @@
           let output = ` <h1>name</h1> `;
           data.forEach(function (post) {
             output += `
-            <option>${post.name}</option>`;
+            <option>${post.name}</option>
+            `;
           });
           document.getElementById('output').innerHTML = output;
         });
