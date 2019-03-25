@@ -4,6 +4,17 @@ body {
     position:relative;
 }
 
+#grad1 {
+    height: 77px;
+    background-color: rgb(230, 116, 116);
+    background-image: linear-gradient(to right, violet, orange, yellow, green, blue, indigo, violet);
+}
+
+h1.display-7{
+    color: rgb(58, 2, 2);
+    text-shadow: 1px 1px 2px red, 0 0 1em rgb(145, 255, 0), 0 0 0.2em blue;
+}
+
 #blue-header{
     padding: 10px;
     margin: 25px;
