@@ -9,8 +9,8 @@ const select = document.getElementById('repositories');
 const url = ('https://api.github.com/orgs/HackYourFuture/repos?per_page=100');
 fetch(url)
   .then(response => response.json())
-  .then((data) => {
-    const repositories = data.results;
+  .then(() => {
+    const repositories = select.results;
     // eslint-disable-next-line array-callback-return
     return repositories.map((repository) => {
       const option = createNode('option');
