@@ -5,7 +5,7 @@ body {
 }
 
 #grad1 {
-    height: 57px;
+    height: 28px;
     background-color: rgb(230, 116, 116);
     background-image: linear-gradient(to right, violet, orange, yellow, green, blue, indigo, violet);
 }
