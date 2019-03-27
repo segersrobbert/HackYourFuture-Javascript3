@@ -22,7 +22,7 @@
   <div id="blue-header">
     <header>
       <p>HYF repositories:
-        <select id="output" class="getText" click="getPosts()" onchange="getRepository()">
+        <select id="output" class="getText" click="getPosts()" onchange="getRepository(), getPostsId()">
           <option id="getPosts" value="0">repository name</option>
         </select>
       </p>
@@ -60,6 +60,24 @@
           document.getElementById('output').innerHTML = output;
         });
     }
+
+    function getPostsId() {
+      fetch('https://api.github.com/orgs/HackYourFuture/repos?per_page=100')
+        .then((res) => res.json())
+        .then((data) => {
+          let idNumber = `<h2>updated time </h2>`;
+          data.forEach(function (post) {
+            idNumber += `
+                    <ul>
+                        <li>(${post.name})</li> 
+                      <li>(${post.updated_at})</li>                    
+                    </ul>           
+                    ` ;
+          });
+          document.getElementById('repo-updated').innerHTML = idNumber;
+        })
+    };
+
 
 
     function getRepository() {
