@@ -11,9 +11,9 @@ body {
 }
 
 h1.display-7{
-    font-size: 22px;
     color: rgb(58, 2, 2);
     text-shadow: 1px 1px 2px red, 0 0 1em rgb(145, 255, 0), 0 0 0.2em blue;
+    font-size: 22px;
 }
 
 #blue-header{
