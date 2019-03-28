@@ -13,6 +13,7 @@
     integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
 </head>
+
 <body>
   <div id="grad1" style="text-align:center;margin:auto;color:rgb(236, 142, 229);font-size:1px;font-weight:bold">
 
@@ -57,6 +58,9 @@
             `;
           });
           document.getElementById('output').innerHTML = output;
+        })
+        .catch(function (err) {
+          console.log("FETCH Parsing Error", err)
         });
     }
 
@@ -74,7 +78,9 @@
                     ` ;
           });
           document.getElementById('repo-updated').innerHTML = idNumber;
-        })
+        }).catch(function (err) {
+          console.log("FETCH Parsing Error", err)
+        });
     };
 
     function getRepository() {
