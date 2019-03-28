@@ -1,65 +1,64 @@
-let repositories//repositories
-let selectList = document.getElementById('repo-select');
-//console.log(loaded) can load the page
-window.onload = fuction() {
-  console.log(loaded);
-}
+window.onload = () => {
+  // eslint-disable-next-line no-console
+  console.log('window loaded');
+};
+
 const url = 'https://api.github.com/orgs/HackYourFuture/repos?per_page=100';
+
+let repositories;
+const selectList = document.getElementById('repo-selector');
+
+function populateSelList() {
+  repositories
+
+    .forEach((r) => {
+      const optionElement = document.createElement('option');
+      optionElement.text = r.name;
+      optionElement.value = r.name;
+      selectList.add(optionElement);
+    });
+}
+
+
+function displaySelectedInfo() {
+  const selectedIndex = selectList.selectedIndex - 1;
+  if (selectedIndex < 0) return;
+
+  const selectedRepo = repositories[selectedIndex];
+
+  document.getElementById('repo-name').innerHTML = selectedRepo.name;
+  document.getElementById('repo-description').innerHTML = selectedRepo.description;
+  document.getElementById('repo-forks').innerHTML = selectedRepo.forks;
+
+  const updateDate = new Date(selectedRepo.updated_at);
+  const date = updateDate.toLocaleDateString();
+  const time = updateDate.toLocaleTimeString();
+
+  document.getElementById('repo-updated').innerHTML = `${date} ${time}`;
+}
+
+
 fetch(url)
   .then((response) => {
     if (response.ok) {
       return response.json();
     }
-    // eslint-disable-next-line prefer-promise-reject-errors
-    return Promise.reject({ status: response.status, statusText: response.statusText });
+    throw new Error("Server can't be reached!");
   })
-  // eslint-disable-next-line no-console
-  .then(response) console.log(res))
-  .then(response => response.json())
-repositories = data;
-populateSelectList();
-selectIndex(0)
-  .then((post) => {
+
+  .then((data) => {
     // eslint-disable-next-line no-console
-    console.log('success', post);
+    console.log('Request succeed', data);
+    repositories = data;
+
+    populateSelList();
+    displaySelectedInfo();
   })
-function populateSelectList(){
-  repositories
 
-    .forEach(r => {
-  const optionElement = document.createElement('option');
-  optionElement.text = r.name;
-  optionElement.value = r.name;
-  selectList.add(optionElement);
+  .catch((error) => {
+    // eslint-disable-next-line no-console
+    console.log('"error fetching data"', error);
+  });
 
-    });
-  }
-function selectIndex(index) {
-  selectList.selectedIndex = (Index + 1);
-}
-function showSelectRepoDetails({
-  const selectedIndex = selectList.selectedIndex - 1;
-  const selectedRepo = repositories[selectedIndex];
-  document.getElementById("repo-name").innerHTML = selectedRepo.name;
-document.getElementById(repo - description').innerHTML = selectedRepo.description;
-document.getElementById('repo-forks').innerHTML = selectedRepo.forks;
 
-const updateDate = new Date(selectRepo.upate_at);
-const date = 
-  })
-  })
-  // eslint-disable-next-line no-console
-  .catch(err => console.log('Error, with message:', err.statusText));
-
-/* const condition = true; // your condition
-if (condition) {
-  const theSelect = document.getElementById('val');
-  const options = theSelect.getElementsByTagName('OPTION');
-  for (let i = 0; i < options.length; i++) {
-    if (options[i].innerHTML === 'alumni' || options[i].innerHTML === 'angular') {
-      theSelect.removeChild(options[i]);
-      i--; // options have now less element, then decrease i
-    }
-  }
-}
-*/
+selectList.onchange = displaySelectedInfo;
