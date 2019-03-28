@@ -71,10 +71,10 @@
           let idNumber = `<h2>updated time </h2>`;
           data.forEach(function (post) {
             idNumber += `
-                    <ul>
-                        <li>(${post.name})</li> 
-                      <li>(${post.updated_at})</li>                    
-                    </ul>           
+          <b>Repository :</b>  <a href="">${post.name} </a><br>
+          <b>Descripion :</b>  ${post.description} <br>
+          <b>Forks :</b>  ${post.forks} <br>
+          <b>Updated :</b>  ${new Date(post.updated_at).toLocaleString('en-US')} <br>
                     ` ;
           });
           document.getElementById('repo-updated').innerHTML = idNumber;
@@ -87,8 +87,6 @@
       let x = document.getElementById("output").value;
       document.getElementById("repo-name").innerHTML = " " + x;
 
-      let y = document.getElementById("output").value.length;
-      document.getElementById("repo-description").innerHTML = " " + y;
     }
 
   </script>
