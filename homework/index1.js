@@ -1,8 +1,8 @@
 const REPOSITORIES_URL = 'https://api.github.com/orgs/HackYourFuture/repos?per_page=100';
-const CONTRIBUTORS_URL = 'https://api.github.com/repos/HackYourFuture/HTML-CSS/contributors';
+// const CONTRIBUTORS_URL = 'https://api.github.com/repos/HackYourFuture/tdd-game/contributors';
 let repositories;
 const repoSelectElement = document.getElementById('repositories');
-const contributorElement = document.getElementById('contributorElements');
+// const contributorElement = document.getElementById('contributorElements');
 
 
 function populateSelectList() {
@@ -42,11 +42,11 @@ function showSelectedRepoDetails() {
   document.getElementById('repo-updated').innerHTML = `${date} ${time}`;
 }
 
-const showContributorsDetails = () => {
+/* const showContributorsDetails = () => {
   CONTRIBUTORS_URL().then((response) => {
-    contributorElement.innerHTML = `Username:${response.data.Username}`;
+    contributorElement.innerHTML = `username:${response.data.login}`;
   });
-};
+}; */
 
 window.onload = () => {
   fetch(REPOSITORIES_URL)
@@ -55,14 +55,14 @@ window.onload = () => {
     .then((data) => {
       repositories = data;
 
-      fetch(CONTRIBUTORS_URL)
-        .then(response => response.json());
+      /* fetch(CONTRIBUTORS_URL)
+        .then(response => response.json()); */
 
 
       populateSelectList();
 
       showSelectedRepoDetails();
-      showContributorsDetails();
+      //  showContributorsDetails();
     });
 };
 

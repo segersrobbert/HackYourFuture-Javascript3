@@ -1,22 +1,20 @@
-const repositories = document.getElementById('repositories');
-const reposContainer = document.querySelector('.repos');
-// const clientId = '1ebd35cdc9277ed1ee8c';
-// const clientSecret = '0ecdc67b56e4ca7c3b4710b60f135d52a8f11a32';
-const fetchRepo = async () => {
-  // const apiCall = await fetch(`https://api.github.com/users/${user}?clientId=${clientId}&clientSecret=${clientSecret}`);
-  const apiCall = await fetch('https: //api.github.com/orgs/HackYourFuture/repos?per_page=100');
+const repoSelectElement = document.getElementById('repositories');
+const unContainer = document.querySelector('.right__div-username');
+const reposContainer = document.querySelector('.right__div-repos');
+const avatarContainer = document.querySelector('.right__div-avatar');
 
-  const data = await apiCall.json();
-  return data;
+const CONTRIBUTORS_URL = async () => {
+  const API_CALL = await fetch(
+    'https://api.github.com/repos/HackYourFuture/tdd-game/contributors',
+  );
+  const data = await API_CALL.json();
+  return { data };
 };
-const showData = () => {
-  fetchRepo().then((repository) => {
-    reposContainer.innerHTML = `Repos:<span class = "main_profile">${repository}</span>`;
+const showContributorsDetails = () => {
+  CONTRIBUTORS_URL(repoSelectElement.value).then((response) => {
+    unContainer.innerHTML = `username:<span class="right_div-value">${response.data.login}</span>`;
+    reposContainer.innerHTML = `Repos:<span class="right_div-value"> ${response.data.repos_url}</span>`;
+    avatarContainer.innerHTML = `<span class="right_div-value">${response.data.avatar_url}</span>`;
   });
 };
-showData();
-
-const repositoryNames = repositories.map(r => r.name);
-
-// eslint-disable-next-line no-undef
-Console.log(repositoryNames);
+showContributorsDetails();
