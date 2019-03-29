@@ -1,6 +1,9 @@
 const REPOSITORIES_URL = 'https://api.github.com/orgs/HackYourFuture/repos?per_page=100';
+const CONTRIBUTORS_URL = 'https://api.github.com/repos/HackYourFuture/HTML-CSS/contributors';
 let repositories;
 const repoSelectElement = document.getElementById('repositories');
+const contributorElement = document.getElementById('contributorElements');
+
 
 function populateSelectList() {
   repositories.forEach((r) => {
@@ -23,6 +26,7 @@ function showSelectedRepoDetails() {
 
   const selectedRepo = repositories[selectedIndex];
 
+
   document.getElementById('repo-name').innerHTML = selectedRepo.name;
 
   document.getElementById('repo-description').innerHTML = selectedRepo.description;
@@ -38,6 +42,12 @@ function showSelectedRepoDetails() {
   document.getElementById('repo-updated').innerHTML = `${date} ${time}`;
 }
 
+const showContributorsDetails = () => {
+  CONTRIBUTORS_URL().then((response) => {
+    contributorElement.innerHTML = `Username:${response.data.Username}`;
+  });
+};
+
 window.onload = () => {
   fetch(REPOSITORIES_URL)
     .then(response => response.json())
@@ -45,10 +55,16 @@ window.onload = () => {
     .then((data) => {
       repositories = data;
 
+      fetch(CONTRIBUTORS_URL)
+        .then(response => response.json());
+
+
       populateSelectList();
 
       showSelectedRepoDetails();
+      showContributorsDetails();
     });
 };
+
 
 repoSelectElement.onchange = showSelectedRepoDetails;
