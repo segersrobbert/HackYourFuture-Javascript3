@@ -16,6 +16,7 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
       selOptions.innerHTML = arrayElement;
       selOptions.value = arrayElement;
       selectElem.appendChild(selOptions);
+      document.getElementById('spinner').style.display = 'none';
     });
     document.getElementById('repo-select').onchange = function popTable() {
       document.getElementById('spinner').style.display = 'block';
