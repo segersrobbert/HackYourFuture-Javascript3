@@ -1,0 +1,40 @@
+body{
+    background-color: antiquewhite;
+    width: 1200px;
+
+}
+#root{
+    border: 2px solid;
+    text-align: center;
+    background-color: green;
+    color: white;
+    font-size: 30px;
+   
+    
+}
+ul{
+    border-radius: 20px;
+    margin-top: 30px;
+    background-color: black;
+    float: left;
+    width: 500px;
+    line-height: 30px;
+    color: azure;
+
+}
+li{
+    list-style: none;
+    padding-left: 10px;
+    
+
+    
+}
+.right-container{
+    margin-top: 30px;
+    float: right;
+    border-radius: 20px;
+    background-color: rgb(190, 175, 175);
+    padding-right: 50px;
+    width: 580px;
+    line-height: 30px;
+}
