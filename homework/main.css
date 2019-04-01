@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 @media (max-width: 767px) {
@@ -41,19 +42,27 @@ h4 {
     flex-direction: row;
     align-items: center;
 }
-
+.error {
+    flex: 0 0 100%; /* fg: 0, fs: 0, fb: 100% */
+    border: 1px dashed red;
+    display: none;
+    color: #721c24;
+    text-align: center;
+}
 .repo-selector {
     margin-left: 16px;
     font-size: 14px;
     width: 250px;
     height: 32px;
     padding: 2px;
+    
 }
 
 .left-div,
 .right-div {
     background-color: white;
     flex: 1;
+    flex-wrap: wrap;
 }
 
 .left-div {

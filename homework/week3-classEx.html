@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fetchOldWay() {
+      fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then(response => response.json())
+        .then(json => console.log(json))
+    }
+
+    async function fetchNewWay() {
+      try {
+        const response = await fetchh('https://jsonplaceholder.typicode.com/todos/1');
+        const json = await response.json();
+        console.log("TCL: fetchNewWay -> json", json)
+      }
+      catch{
+        console.log("something went wrong")
+      }
+    }
+
+    fetchNewWay();
+
+  </script>
+</body>
+
+</html>

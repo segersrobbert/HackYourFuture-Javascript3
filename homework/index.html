@@ -18,13 +18,16 @@
       <img id="logo" src="hyfrepo2.png">
     </header>
     <div id="container">
-      <div class="left-div whiteframe repo-properties">
+      <div class="up-div error" id="error">
+        <p>Something went to wrong while retrieving data from server. Please check your internet connection</p>
+      </div>
+      <div class="left-div whiteframe repo-properties" id="left">
         <div><label>Repository:</label> <span id="repo-name"></span></div>
         <div><label>Description:</label> <span id="repo-description"></span></div>
         <div><label>Forks:</label> <span id="repo-forks"></span></div>
         <div><label>Updated:</label> <span id="repo-updated"></span></div>
       </div>
-      <div class="right-div whiteframe">
+      <div class="right-div whiteframe" id="right">
         <p class="contributor-header">Contributions</p>
         <ul id="contributor-list"></ul>
       </div>

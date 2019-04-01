@@ -54,4 +54,10 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
           document.getElementById('spinner').style.display = 'none';
         });
     };
+  })
+  .catch(() => {
+    document.getElementById('error').style.display = 'block';
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('left').style.display = 'none';
+    document.getElementById('right').style.display = 'none';
   });
