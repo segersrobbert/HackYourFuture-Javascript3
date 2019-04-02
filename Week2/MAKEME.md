@@ -38,9 +38,11 @@ You will continue to work on the files `index.js` and (possibly) `main.css`.
   > *Hint*: As we saw last week, the link to the repo's contributors is a property of a repo.
 
 - [ ] Clicking on the user should open this user's GitHub home page in a new tab.
-  > *Hint*: `_target`
+  > *Hint*: `target`
 
 - [ ] When loading the repositories initially, and when loading the contributors after selecting a repo: display a 'loading' text or 'spinner'. Remove it once the data is loaded and displayed (or when an error occurs).
+  > *Hint*: In Chrome DevTools, in the Network tab, you can simulate a 'Slow 3G' connection to test your loading text/spinner.
+  > ![Simulate slow internet](assets/simulate_slow.png)
 
 - [ ] When any error occurs - either when [fetching](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) the repos or when loading contributers, clearly display a nice error message somewhere on the page.
   > *Hints*:
@@ -56,7 +58,7 @@ You will continue to work on the files `index.js` and (possibly) `main.css`.
   >   ```
   >   `fetch` will only *reject* when there is really a network error, like when you're offline.
   >- You can re-use a function you pass as callback to `then`!
-  >- Test this by changing your fetch urls, or even by deconnecting your internet. You can simulate this in the DevTools, in the Network tab:
+  >- Test this by changing your fetch urls, and by simulating having no internet. You can do this in DevTools, in the Network tab:
   >  ![Simulate offline](assets/simulate_offline.png)
 
 - [ ] If not yet completed in week 1, make your app responsive. Use CSS media queries and [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)).
