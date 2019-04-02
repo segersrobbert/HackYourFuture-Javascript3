@@ -30,8 +30,7 @@ window.onload = () => fetch('https://api.github.com/orgs/HackYourFuture/repos?pe
         .then(status)
         .then(response => response.json())
         // eslint-disable-next-line no-shadow
-        .then((data) => {
-          const contributors = data;
+        .then((contributors) => {
           const mylist = document.getElementById('contributor-list');
           const lis = mylist.getElementsByTagName('li');
           while (lis.length > 0) {
