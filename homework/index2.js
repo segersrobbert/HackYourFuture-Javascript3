@@ -2,12 +2,12 @@ function getPromise() {
   let ar = fetch('https://api.github.com/orgs/HackYourFuture/repos?per_page=100')
     .then(response => response.json())
     // eslint-disable-next-line no-console
-    .then(data => console.log(data))
-
+    .then(data => data);
   return ar;
 }
+
 const myPromise = getPromise();
-console.log(JSON.stringify(myPromise));
+myPromise.then(x => console.log(x))
 // function selectedRepoCaracteristics(selectValue) {
 //   myPromise.forEach((x) => {
 //     if (x.name === selectValue) {

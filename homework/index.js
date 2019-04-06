@@ -1,3 +1,4 @@
+let repositories;
 function getPromise() {
   return fetch('https://api.github.com/orgs/HackYourFuture/repos?per_page=100')
     .then(response => response.json());
@@ -17,6 +18,33 @@ function selectedRepoCaracteristics(selectValue) {
     });
   });
 }
+
+
+function showContributors(list) {
+  // document.getElementById('repoContributors').removeChild();
+  let cont = '<ul class="list-group">';
+  list.forEach((item) => {
+    console.log(item)
+    // cont += `<li>${item.avatar_url}</li>`
+    cont += `<li class="list-group-item"><a href="${item.html_url}" target="_blank">${item.login}</a></li>`;
+  });
+  cont += '</ul>';
+  document.getElementById('repoContributors').innerHTML = cont;
+}
+
+function selectedRepoContributors(selectValue) {
+  myPromise.then((result) => {
+    result.forEach((x) => {
+      if (x.name === selectValue) {
+        console.log(x.contributors_url);
+        fetch(x.contributors_url)
+          .then(response => response.json())
+          .then(data => showContributors(data));
+      }
+    });
+  });
+}
+
 function loadPage() {
   myPromise.then((result) => {
     // Make an array of all the names
@@ -31,6 +59,7 @@ function loadPage() {
     // Show the caracteristics of the default value of the select
     const selectValue = document.getElementById('mySelect').value;
     selectedRepoCaracteristics(selectValue);
+    selectedRepoContributors(selectValue);
   });
 }
 
@@ -38,4 +67,5 @@ loadPage();
 document.getElementById('mySelect').addEventListener('change', () => {
   // eslint-disable-next-line no-undef
   selectedRepoCaracteristics(mySelect.value);
+  selectedRepoContributors(mySelect.value);
 });
